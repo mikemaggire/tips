@@ -19,3 +19,5 @@ GOOS=linux GOARCH=arm GOARM=5 go build;
 go test ./...
 
 ```
+
+- [how to deploy step by step](https://codesahara.com/blog/how-to-deploy-golang-to-production-step-by-step/)

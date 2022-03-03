@@ -14,6 +14,8 @@ sudo /etc/init.d/cron start
 crontab -l
 # edit cron tasks
 crontab -e
+# watch logs
+grep CRON /var/log/syslog
 ```
 
 ## Permissions

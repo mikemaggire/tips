@@ -7,7 +7,8 @@
 
 ## packages
 
-* [CoinGecko API Client](CoinGecko API Client)
+* [CoinGecko API](https://www.coingecko.com/en/api)
+* [CoinGecko API Go Package](https://github.com/superoo7/go-gecko)
 
 ## Build & co
 

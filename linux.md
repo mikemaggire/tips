@@ -67,9 +67,9 @@ samba configuration file is `/etc/samba/smb.conf`
    client min protocol = SMB2
    client max protocol = SMB3
 ...
-[blacklagoon]
-   comment = Partage du drive USB blacklagoon du Raspberry Pi
-   path = /data/blacklagoon
+[usbshare]
+   comment = share USB drive on the Raspberry Pi
+   path = /data/usbshare
    valid users = lool,me # take care of the writting, valid users with an 's'
    directory mask = 0750
    create mask = 0750

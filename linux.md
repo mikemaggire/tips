@@ -2,7 +2,36 @@
 
 ## Misc
 
+## Printing
+
+- [How to Set Up a Print Server on Raspberry Pi Using CUPS and Ubuntu 20.04](https://medium.com/@liviu.ciulinaru/how-to-set-up-a-print-server-on-raspberry-pi-using-cups-and-ubuntu-20-04-132c83e3c2b0)
 - [Command-Line Printing and Options](https://www.cups.org/doc/options.html)
+
+```text
+# Config /etc/cups/cupsd.conf
+...
+# Listen localhost:631
+Port 631
+...
+# Restrict access to the server...
+<Location />
+  Order allow,deny
+  Allow @LOCAL
+</Location>
+
+# Restrict access to the admin pages...
+<Location /admin>
+  Order allow,deny
+  Allow @LOCAL
+</Location>
+...
+```
+
+```bash
+sudo service cups {start|stop|restart}
+sudo usermod -a -G lpadmin {user}
+https://{local-printer-ip}:631/admin
+```
 
 ## Cron
 

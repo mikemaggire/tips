@@ -79,6 +79,7 @@ ls -la {SharePath}
 
 - [Install Samba on Raspi](https://www.inpact-hardware.com/article/1013/transformez-votre-raspberry-pi-4-en-nas)
 - [How to Setup a Raspberry Pi Samba Server](https://pimylifeup.com/raspberry-pi-samba/) 2022-02-14
+- [How to force user grouop ownership on a samba share](https://www.thegeekdiary.com/how-to-force-user-group-ownership-of-files-on-a-samba-share/)
 
 ```bash
 # samba server (V4.13.17-Ubuntu)
@@ -106,6 +107,7 @@ samba configuration file is `/etc/samba/smb.conf`
    writeable = yes # take care of the writting, writeable with 'ea'
    read only = no
    guest ok = no
+   force group = {samba_user_group }
 ...
 ```
 

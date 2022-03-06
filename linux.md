@@ -11,18 +11,18 @@
 # Config /etc/cups/cupsd.conf
 ...
 # Listen localhost:631
-Port 631
+Port 631 # for a LAN access
 ...
 # Restrict access to the server...
 <Location />
   Order allow,deny
-  Allow @LOCAL
+  Allow @LOCAL # for a LAN access
 </Location>
 
 # Restrict access to the admin pages...
 <Location /admin>
   Order allow,deny
-  Allow @LOCAL
+  Allow @LOCAL # for a LAN access
 </Location>
 ...
 ```
@@ -30,7 +30,14 @@ Port 631
 ```bash
 sudo service cups {start|stop|restart}
 sudo usermod -a -G lpadmin {user}
+
+# admin acces in web mode
 https://{local-printer-ip}:631/admin
+
+# command line
+# display printers
+sudo lpinfo -v 
+
 ```
 
 ## Cron

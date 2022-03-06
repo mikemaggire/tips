@@ -96,18 +96,22 @@ samba configuration file is `/etc/samba/smb.conf`
 [global]
    client min protocol = SMB2
    client max protocol = SMB3
+   map archive = no
 ...
 [usbshare]
    comment = share USB drive on the Raspberry Pi
    path = /data/usbshare
    valid users = lool,me # take care of the writting, valid users with an 's'
-   directory mask = 0750
-   create mask = 0750
+   directory mask = 0750 # or 0775
+   create mask = 0750 # or 0775
    browseable = yes
    writeable = yes # take care of the writting, writeable with 'ea'
    read only = no
    guest ok = no
    force group = {samba_user_group }
+   force create mode = 0750 # or 0775
+   force directory mode = 0750 # or 0775
+   public = no
 ...
 ```
 
@@ -120,14 +124,34 @@ Configured samba's users can be seen with pbedit
 sudo pdbedit -L -v
 ```
 
-On the client side, a drive must be mounted
+Give the right permissions to the share drive
 
+```bash
+mkdir /data/usbshare
+chown :sambashare /data/usbshare
+chmod 775 /data/usbshare
+sudo chmod g+s /data/usbshare
 ```
-# edit mounted drive configuration
-sudo nano /etc/fstab
+
+On the client side, a drive must be mounted and configured with fstab: `/etc/fstab`
+
+```text
+...
+//{IPofTheSambaServer}/{SambaServerShareName} {localDriveName} cifs _netdev,rw,uid=1000,auto,vers=3.0,credentials=/root/.sambacredentials,iocharset=utf8,file_mode=0774,dir_mode=0775 0 0
+...
+```
+
+For automount, we store the credentials in a file that must be in the /root/ path: `/root/.sambacredientials`
+
+```text
+username={yourUserNameOnTheSambaServer}
+password={yourPasswordOnTheSambaServer}
+```
+Then manually mount/unmount the drive
+
+```bash
 # mount drives configured on this file
-sudo mount -a
+sudo mount -a -v
 # to unmount a drive
 sudo umount {directory}
-
 ```

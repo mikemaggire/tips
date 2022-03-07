@@ -139,8 +139,13 @@ chown :sambashare /data/usbshare
 chmod 775 /data/usbshare
 sudo chmod g+s /data/usbshare
 ```
+### On the client side
 
-On the client side, a drive must be mounted and configured with fstab: `/etc/fstab`
+On the client side, a drive must be mounted and configured with fstab: `/etc/fstab`, and cifs libs must be installed
+
+```bash
+sudo apt install cifs-utils
+```
 
 ```text
 ...

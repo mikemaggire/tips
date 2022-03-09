@@ -5,7 +5,7 @@ https://go.dev/
 ## FUSE (Frequent Use)
 
 * [String Formating](https://pkg.go.dev/fmt)
-* [Date & Time Formating](https://pkg.go.dev/time#Time.Format)
+* [Date & Time Formating](https://pkg.go.dev/time#pkg-constants)
 
 ## Program Struture
 

@@ -40,6 +40,12 @@ sudo lpinfo -v
 
 ```
 
+To remove color characters from a file, use the `sed` command
+
+``` bash
+sed 's/\x1b\[[0-9;]*m//g' {input_file} > {output_file}
+```
+
 ## Cron
 
 ```bash

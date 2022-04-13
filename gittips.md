@@ -68,3 +68,45 @@ git branch -d mybranchname
 
 - [keeping parts of your codebase private on github](https://24ways.org/2013/keeping-parts-of-your-codebase-private-on-github/)
 
+# Git create a new repo from a clone
+## The issue
+When you clone a repo to a local folder, it's still pointing to the original (let say `origin`) remote repo. If you want to use this cloned repo as a basis for a new repo, then you need to 
+
+> You may want to fork it. But fork is not allowed on your own repos. Furthermore a fork is also linked to the original repo, and you might not want to.
+
+### Remove the reference to the GitHub repo
+
+```shell
+git remote remove origin
+```
+
+Will delete the config settings from `.git/config`
+
+⚠️ FETCH_HEAD still pointing to github. Need to remove it with `rm .git/FETCH_HEAD`
+
+### Assign a new remote repo to the local git folder (eg. cloned)
+
+```shell
+git remote add origin https://github.com/yourgitaccount/newrepo
+```
+
+> Do not use `git remote set-url` as it sets the url of an existing origin.
+
+### create and empty repo on github
+We can not create a repo on github from the command line (unless via API and so with a specific client tool).
+
+Basically, go to http://github.com/yourgitaccount and the create an empty repo.
+
+### 1st push
+
+```shell
+git push -u origin master
+```
+
+Parameter `-u` stand for `--set-upstream` to create a tracking with the remote repo.
+
+### _references_
+
+* https://stackoverflow.com/questions/16330404/how-to-remove-remote-origin-from-git-repo
+* [basics of git explaines with scheme](https://marklodato.github.io/visual-git-guide/index-fr.html)
+

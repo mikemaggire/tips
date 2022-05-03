@@ -1,6 +1,16 @@
 # Linux
 
-## Misc
+## Usefull commands
+
+### dig: (Domain Information Groper) lookup info into DNS servers
+```
+$ dig {url} +nostats +nocomments +nocmd
+# options
+# +trace
+```
+
+
+[Comment utiliser la commande Dig sous Linux](https://www.hostinger.fr/tutoriels/comment-utiliser-la-commande-dig-sous-linux)
 
 ## Printing
 

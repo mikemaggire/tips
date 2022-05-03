@@ -3,7 +3,8 @@
 ## Usefull commands
 
 ### dig: (Domain Information Groper) lookup info into DNS servers
-```
+
+```shell
 $ dig {url} +nostats +nocomments +nocmd
 # options
 # +trace
@@ -52,7 +53,7 @@ sudo lpinfo -v
 
 To remove color characters from a file, use the `sed` command
 
-``` bash
+```bash
 sed 's/\x1b\[[0-9;]*m//g' {input_file} > {output_file}
 ```
 

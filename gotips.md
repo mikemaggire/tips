@@ -10,8 +10,10 @@ https://go.dev/
 ## Program Struture
 
 - FR [Initiation aux modules](https://dpp.st/blog/golang-modules/)
+- [Everything you need to know about Packages in Go](https://medium.com/rungo/everything-you-need-to-know-about-packages-in-go-b8bac62b74cc)
+- [Executable and non-executable module in Go (Golang)](https://golangbyexample.com/type-module-golang/) golangbyexample.com
 
-## Build & co
+## Build & Deploy
 
 ```bash
 # build for another platform eg Raspi
@@ -23,6 +25,33 @@ go test ./...
 ```
 
 - [how to deploy step by step](https://codesahara.com/blog/how-to-deploy-golang-to-production-step-by-step/)
+
+
+## Publishing
+
+```bash
+# first of all you need to commit and pull everything
+git checkout main
+git fetch origin main
+git add .
+git commit -m "publish v{x.y.z}"
+git push origin 
+
+# create a git tag for the version to deploy
+# the version number must start with a lowercase `v`
+# major version number are significant (v0... and v1... are considered differently)
+git tag v{x.y.z}
+
+# push the tag, because they're not pushed with your commits
+git push origin v{x.y.z}
+# or 
+git push --tags
+
+# Then list your sources under
+GOPROXY=proxy.golang.org go list -m github.com/{gituser}/{repo}@v{x.y.z}
+```
+
+- [Publishing a module](https://go.dev/doc/modules/publishing) - go.dev
 
 ## Dev
 - go.dev [Language Specification](https://go.dev/ref/spec)

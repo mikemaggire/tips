@@ -56,14 +56,11 @@ git log --pretty=format:"%h - %an, %ar : %s"
 ```bash
 # list local tags
 git tag
+# create a local tag with the last local commit (copy all sources)
+git tag {vx.y.z}
+# push the tag to the remote
+git push origin {vx.y.z}
 
-# delete all local tags (windows powershell syntax)
-git tag | foreach-object -process { git tag -d $_ }
-# delete non required tags directy on server and fetch repo before fetch tags
-git fetch
-git fetch --prune --tags
-# delete tags on remote
-git push --delete origin tagid
 ```
 
 ## Squash
@@ -97,6 +94,20 @@ git add .
 ```
 
 This removes all files from the repository and adds them back (this time respecting the rules in your .gitignore).
+
+## Git Tags
+
+Delete all local tags (windows powershell syntax)
+
+```bash
+# delete all local tags (windows powershell syntax)
+git tag | foreach-object -process { git tag -d $_ }
+# delete non required tags directy on server and fetch repo before fetch tags
+git fetch
+git fetch --prune --tags
+# delete tags on remote
+git push --delete origin tagid
+
 
 ## Clone a single remote branch
 

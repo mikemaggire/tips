@@ -31,6 +31,12 @@ Don't forget to add your SSH key to the ssh agent
 ssh-add ~/.ssh/id_rsa.github
 ```
 
+After cloning, you may need to change the url 
+
+```bash
+git remote set-url origin git@github.com:{gitusername}/{yourrepo}.git
+```
+
 ## Git user config
 
 ```bash
@@ -43,7 +49,6 @@ git config --global --list
 git config user.name "{mygit_username}"
 git config user.email "{mygit_useremail}"
 ```
-
 ## Git log
 
 ```bash
